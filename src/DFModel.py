@@ -198,12 +198,12 @@ class DFModel(object):
     def load(self, checkpoint_path):
         # Load saved parameters
         self.continueTraining = True
-        checkpoint = torch.load(checkpoint_path)
+        checkpoint = torch.load(checkpoint_path, weights_only=False)
         self.net.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer = torch.optim.Adam(self.net.parameters())
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         self.net.eval()
-        # self.net.load_state_dict(torch.load(model_path))
+        # self.net.load_state_dict(torch.load(model_path, weights_only=False))
         # self.net.eval()
     
 
