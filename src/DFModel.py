@@ -130,6 +130,14 @@ class DFModel(object):
             pred_R = self.net(img_src_R,img_tar_R).to(torch.device('cpu')).detach().numpy()
             pred_I = self.net(img_src_I,img_tar_I).to(torch.device('cpu')).detach().numpy()
 
+            outfile = './src_R_%d.mhd' %dataIdx
+            im = sitk.GetImageFromArray(img_src_R.reshape(100,100), isVector=False)
+            sitk.WriteImage(im, outfile, True) 
+
+            outfile2 = './tar_R_%d.mhd' %dataIdx
+            im1 = sitk.GetImageFromArray(img_tar_R.reshape(100,100), isVector=False)
+            sitk.WriteImage(im1, outfile2, True) 
+
             # num =self.net(img, img1).to(torch.device('cpu')).detach().numpy()
             # newnum= num.reshape(1,1)
             # predictions[dataIdx,:] = newnum
