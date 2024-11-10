@@ -61,7 +61,7 @@ def getConfig(name):
         ae_config['training']['epochs_num'] = 500
         ae_config['training']['batch_size'] = 4
         ae_config['training']['trunc_dim'] = 16
-        ae_config['training']['learning_rate'] = 0.001
+        ae_config['training']['learning_rate'] = 0.0000001
         ae_config['loss']['name'] = 'MSE'
         ae_config['training']['report_per_epochs'] = 1
     elif name == 'deepflash3D':

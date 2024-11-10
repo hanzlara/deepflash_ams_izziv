@@ -10,11 +10,16 @@ import SimpleITK as sitk
 import os, glob
 import numpy as np
 from fileIO.io import safeLoadMedicalImg, convertTensorformat, loadData2
+import matplotlib.pyplot as plt
 
 def loadDataVol(inputfilepath, targetDim):
     SEG, COR, AXI = [0,1,2]
     for idx, filename in enumerate (sorted(glob.glob(inputfilepath), key=os.path.getmtime)):
-        img = sitk.GetArrayFromImage(sitk.ReadImage(filename))
+        img = sitk.GetArrayFromImage(sitk.ReadImage(filename)) # slike so vrjetno ze FFTjanje, za boljši performance pri konvoluciji
+        # koda za prikazovanje vhodnih slik.
+        # plt.imshow(img[0])
+        # plt.show()
+        # input("cakaj") # pocakaj na "enter" da prikazes naslednjo sliko
         img = np.rollaxis(img, 0, 3)
         temp = convertTensorformat(img,
                                 sourceFormat = 'single3DGrayscale', 
@@ -97,6 +102,7 @@ def runExp(config, srcreal, tarreal, velxreal, velyreal, velzreal, srcimag, tari
                         device=device)
     #6. Training and Validation
     loss = deepflashnet.trainDeepFlash(training_dataset=training, training_config = config['training'], valid_img= None, expPath = None)
+    print("Loss:", loss)
     #7. check point file saving
     model_save_path = './save_trained_model/'
     if not os.path.exists(model_save_path ):
