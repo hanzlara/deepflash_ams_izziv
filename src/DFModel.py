@@ -100,7 +100,7 @@ class DFModel(object):
                     pred_R = np.moveaxis(output_R.to(torch.device('cpu')).detach().numpy(),0,-1) 
                     output_dim = int(training_config['trunc_dim'])
                     pred_R = np.array(pred_R)
-                    print (pred_R.shape)
+                    # print (pred_R.shape)
                     pred_I = np.moveaxis(output_I.to(torch.device('cpu')).detach().numpy(),0,-1) 
                     # print (pred.shape)
                     pred_I = np.array(pred_I)
@@ -109,13 +109,13 @@ class DFModel(object):
                     # sitk.WriteImage(im, './validation_%s.nii'%j, False)
 
             # ===================log========================            
-            print(repr(j) + " Epoch:  " + " Energy:  "+ repr(TotalEnergy));
+            print(f"Epoch: {j:4d} Energy: {TotalEnergy:8f}", end="\r");
             
 
             TotalEnergy=0
             # report_epochs_num = training_config.get('report_per_epochs', 10)      
 
-        print('Training finished')
+        print('\nTraining finished')
         return loss
     def pred(self, dataset, scale):
         # Load new data and let go through network

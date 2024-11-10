@@ -66,7 +66,16 @@ def runExp(config, savemodel, srcreal, tarreal, srcimag, tarimag):
     #%% 6. Load trained model   
     deepflashnet.load(savemodel)
     # #%% 7. Testing
+    print("in type", testing)
+    print("in len", len(testing))
+    print("in type", testing.shape)
     predictions = deepflashnet.pred(dataset= testing, scale = 1)
+    print(predictions)
+    print("tajpinjo:", type(predictions[0]), type(predictions[1]))
+    print("shejpinjooo:", predictions[0].shape, predictions[1].shape)
+    #import matplotlib.pyplot as plt
+    #plt.imshow(np.abs(np.fft.ifft2((R[0]+I[0]*1j).T)), cmap="viridis")
+    #plt.savefig("vn.png")
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--network_type', type=str, help="choosing 2D or 3D network")
