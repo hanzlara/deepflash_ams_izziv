@@ -61,13 +61,13 @@ def runExp(config, srcreal, tarreal, velxreal, velyreal, velzreal, srcimag, tari
     input_vel_data_y_I = loadDataVol(velyimag,targetDim)
     input_vel_data_z_I = loadDataVol(velzimag,targetDim)
     input_vel_data_I = np.concatenate((input_vel_data_x_I, input_vel_data_y_I,input_vel_data_z_I ), axis = targetDim+1)
-    import matplotlib.pyplot as plt
-    plt.subplot(1,2,1)
-    plt.imshow(input_tar_data_R[0], cmap="gray")
-    plt.subplot(1,2,2)
-    plt.imshow(input_tar_data_I[0], cmap="gray")
-    plt.savefig("tar_data.png")
-    print ('Training Data loaded!')
+    # import matplotlib.pyplot as plt
+    # plt.subplot(1,2,1)
+    # plt.imshow(input_tar_data_R[0], cmap="gray")
+    # plt.subplot(1,2,2)
+    # plt.imshow(input_tar_data_I[0], cmap="gray") # lahko napises  virid...
+    # plt.savefig("tar_data.png")
+    # print ('Training Data loaded!')
     from torchvision import transforms
     from fileIO.io import safeDivide
     #4. Add transformation

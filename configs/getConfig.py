@@ -11,7 +11,7 @@ def getConfig(name):
                         'crop':{
                             'method': 'sliding',
                             'patch_shape': (32,32,32),
-                            'strides':(4,4,4)
+                            'strides':(4,4,4) # to dvoje so parametri za konvolucijo
                             },
                         'augmentation': 
                             None,
@@ -58,13 +58,13 @@ def getConfig(name):
         ae_config['data']['augmentation'] = None
         ae_config['net']['type'] = 'DF'
         ae_config['net']['paras']['structure']  = 'deepflash'
-        ae_config['training']['epochs_num'] = 150 # stevilo ponovitev učenja
+        ae_config['training']['epochs_num'] = 500 # stevilo ponovitev učenja
         ae_config['training']['batch_size'] = 4 #kolko slik gre čez
         ae_config['training']['trunc_dim'] = 16 # model sprejme 16 vhodnih dimenzij
         ae_config['training']['learning_rate'] = 0.001 # velikost koraka pri optimizaciji
         ae_config['loss']['name'] = 'MSE' # kvadriras in povprecis , najmanjši kvadrati
         ae_config['training']['report_per_epochs'] = 1 
-    elif name == 'deepflash3D': # tega ne rabim
+    elif name == 'deepflash3D': # tega ne rabim se 
         ae_config = getConfig('default')
         ae_config['data']['augmentation'] = None
         ae_config['net']['type'] = 'DF'

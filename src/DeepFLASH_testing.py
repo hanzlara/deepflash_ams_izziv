@@ -68,7 +68,7 @@ def runExp(config, savemodel, srcreal, tarreal, srcimag, tarimag):
     # #%% 7. Testing
     print("in type", testing)
     print("in len", len(testing))
-    predictions = deepflashnet.pred(dataset= testing, scale = 1)
+    predictions = deepflashnet.pred(dataset= testing, scale = 1) # vzame podatke in da ven rezultate !!1
     print(predictions)
     print("tajpinjo:", type(predictions[0]), type(predictions[1]))
     print("shejpinjooo:", predictions[0].shape, predictions[1].shape)
