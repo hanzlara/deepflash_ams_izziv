@@ -1,0 +1,1 @@
+ls *.gz | xargs gunzip 
