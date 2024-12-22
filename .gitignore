@@ -1,3 +1,4 @@
 *.raw
 *.mhd
 *.nii
+__pycache__
